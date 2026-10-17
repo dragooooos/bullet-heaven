@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+.mono/
+bin/
+obj/
 /android/
+*.translation
