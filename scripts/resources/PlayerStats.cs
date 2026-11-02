@@ -7,5 +7,5 @@ public partial class PlayerStats : Resource
 	public int MaxHealth { get; set; }
 
 	[Export]
-	public int Speed { get; set; }
+	public float Speed { get; set; }
 }
