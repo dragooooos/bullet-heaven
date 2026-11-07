@@ -7,20 +7,20 @@ public partial class Stats : Node
     public delegate void StatChangedEventHandler(StatType statType, float newValue);
 
     [Export]
-    public PlayerStats baseStats { get; set; }
+    public PlayerStats BaseStats { get; set; }
 
     [Export]
-    public Godot.Collections.Array<Upgrade> upgrades { get; set; } = new Godot.Collections.Array<Upgrade>();
+    public Godot.Collections.Array<Upgrade> Upgrades { get; set; } = new Godot.Collections.Array<Upgrade>();
 
     public void AddUpgrade(Upgrade upgrade)
     {
-        upgrades.Add(upgrade);
+        Upgrades.Add(upgrade);
         NotifyStatChanges(upgrade);
     }
 
     public void RemoveUpgrade(Upgrade upgrade)
     {
-        if (upgrades.Remove(upgrade))
+        if (Upgrades.Remove(upgrade))
         {
             NotifyStatChanges(upgrade);
         }
@@ -53,14 +53,17 @@ public partial class Stats : Node
         switch (statType)
         {
             case StatType.MaxHealth:
-                baseValue = baseStats.MaxHealth;
+                baseValue = BaseStats.MaxHealth;
                 break;
             case StatType.Speed:
-                baseValue = baseStats.Speed;
+                baseValue = BaseStats.Speed;
+                break;
+            case StatType.InvincibilityDuration:
+                baseValue = BaseStats.InvincibilityDuration;
                 break;
         }
 
-        foreach (Upgrade upgrade in upgrades)
+        foreach (Upgrade upgrade in Upgrades)
         {
             foreach (StatModifier modifier in upgrade.StatModifiers)
             {

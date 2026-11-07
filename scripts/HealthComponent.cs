@@ -13,7 +13,8 @@ public partial class HealthComponent : Node
 
     public int CurrentHealth { get; private set; }
 
-    private bool isDead = false;
+    public bool IsDead = false;
+
     private float previousMaxHealth;
 
     public override void _Ready()
@@ -26,7 +27,7 @@ public partial class HealthComponent : Node
     public void TakeDamage(int damage)
     {
         if (damage < 0) return; // Ignore negative damage values
-        if (isDead) return;
+        if (IsDead) return;
 
         CurrentHealth -= damage;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, (int)Stats.GetStatValue(StatType.MaxHealth));
@@ -35,7 +36,7 @@ public partial class HealthComponent : Node
 
         if (CurrentHealth == 0)
         {
-            isDead = true;
+            IsDead = true;
             EmitSignalDied();
         }
 
@@ -43,7 +44,7 @@ public partial class HealthComponent : Node
 
     private void OnStatChanged(StatType statType, float newValue)
     {
-        if (isDead) return;
+        if (IsDead) return;
 
         if (statType == StatType.MaxHealth)
         {

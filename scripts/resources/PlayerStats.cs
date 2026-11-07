@@ -8,4 +8,7 @@ public partial class PlayerStats : Resource
 
 	[Export]
 	public float Speed { get; set; }
+
+	[Export]
+	public float InvincibilityDuration { get; set; }
 }
