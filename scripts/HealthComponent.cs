@@ -14,11 +14,13 @@ public partial class HealthComponent : Node
     public int CurrentHealth { get; private set; }
 
     private bool isDead = false;
+    private float previousMaxHealth;
 
     public override void _Ready()
     {
         Stats.StatChanged += OnStatChanged;
         CurrentHealth = (int)Stats.GetStatValue(StatType.MaxHealth);
+        previousMaxHealth = (int)Stats.GetStatValue(StatType.MaxHealth);
     }
 
     public void TakeDamage(int damage)
@@ -41,13 +43,21 @@ public partial class HealthComponent : Node
 
     private void OnStatChanged(StatType statType, float newValue)
     {
+        if (isDead) return;
+
         if (statType == StatType.MaxHealth)
         {
             int newMaxHealth = (int)newValue;
 
             CurrentHealth = Mathf.Clamp(CurrentHealth, 0, newMaxHealth);
 
-            // TODO: Heal the player by the difference if the new max health is greater than the current health
+            // Heal the player by the difference between the new max health and the previous max health
+            if (previousMaxHealth < newMaxHealth)
+            {
+                CurrentHealth += (int)(newMaxHealth - previousMaxHealth);
+                CurrentHealth = Mathf.Clamp(CurrentHealth, 0, newMaxHealth);
+            }
+            previousMaxHealth = newMaxHealth;
 
             EmitSignalHealthChanged(CurrentHealth, newMaxHealth);
         }

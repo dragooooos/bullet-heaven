@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://be8t133h1erhu" path="res://scripts/Player.cs" id="1_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cyon4708f6ug5" path="res://assets/textures/circle.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://dfb3qoygbuhiv" path="res://scripts/HealthComponent.cs" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://p10kigdi26yx" path="res://scripts/PlayerHurtbox.cs" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://dupyxkfu3qqo4" path="res://scripts/Stats.cs" id="4_qlg0r"]
 [ext_resource type="Resource" uid="uid://dig1v1w7vxmj2" path="res://resources/player_default.tres" id="5_qlg0r"]
 
@@ -24,14 +25,15 @@ texture = ExtResource("1_v0iea")
 shape = SubResource("CircleShape2D_hk511")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=388217109]
+script = ExtResource("3_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1013596940]
 shape = SubResource("CircleShape2D_4xqv3")
 debug_color = Color(0.99084824, 0.025033526, 0.24676916, 0.41960785)
 
-[node name="HealthComponent" type="Node" parent="." unique_id=416890163]
+[node name="HealthComponent" type="Node" parent="." unique_id=416890163 node_paths=PackedStringArray("Stats")]
 script = ExtResource("3_dqkch")
-baseStats = ExtResource("5_qlg0r")
+Stats = NodePath("../Stats")
 
 [node name="Stats" type="Node" parent="." unique_id=167663937]
 script = ExtResource("4_qlg0r")
