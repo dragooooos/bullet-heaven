@@ -32,6 +32,7 @@ public partial class HealthComponent : Node
         CurrentHealth -= damage;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, (int)Stats.GetStatValue(StatType.MaxHealth));
 
+        GD.Print($"Player took {damage} damage. Current health: {CurrentHealth}/{(int)Stats.GetStatValue(StatType.MaxHealth)}");
         EmitSignalHealthChanged(CurrentHealth, (int)Stats.GetStatValue(StatType.MaxHealth));
 
         if (CurrentHealth == 0)

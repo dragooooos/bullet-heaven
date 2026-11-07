@@ -29,7 +29,7 @@ public partial class PlayerHurtbox : Area2D
         if (area is Hitbox hitbox)
         {
             HealthComponent.TakeDamage(hitbox.Damage);
-            IFrameTimer.Start();
+            StartIFrames();
         }
     }
 
@@ -37,11 +37,13 @@ public partial class PlayerHurtbox : Area2D
     {
         if (HealthComponent.IsDead) return;
 
+        SetDeferred("monitorable", true);
+
         Hitbox[] overlappingHitboxes  = GetOverlappingAreas().OfType<Hitbox>().ToArray();
         if (overlappingHitboxes.Length > 0)
         {
             HealthComponent.TakeDamage(overlappingHitboxes[0].Damage);
-            IFrameTimer.Start();
+            StartIFrames();
         }
     }
 
@@ -51,6 +53,12 @@ public partial class PlayerHurtbox : Area2D
         {
             IFrameTimer.WaitTime = newValue;
         }
+    }
+
+    private void StartIFrames()
+    {
+        SetDeferred("monitorable", false);
+        IFrameTimer.Start();
     }
 
     public override void _ExitTree()

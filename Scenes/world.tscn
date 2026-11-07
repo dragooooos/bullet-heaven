@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bqu4yvuecdr8w" path="res://scenes/hitbox.tscn" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://cyon4708f6ug5" path="res://assets/textures/circle.png" id="3_k0juu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qugoh"]
-radius = 23.194826
+[sub_resource type="CircleShape2D" id="CircleShape2D_hk511"]
 
 [node name="World" type="Node2D" unique_id=275691042]
 
@@ -13,15 +12,15 @@ radius = 23.194826
 position = Vector2(649, 365)
 
 [node name="Hitbox" parent="." unique_id=111279868 instance=ExtResource("2_4wyf3")]
-position = Vector2(395, 206)
+position = Vector2(226, 218)
 Damage = 1
 
 [node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=1043439207]
-shape = SubResource("CircleShape2D_qugoh")
+shape = SubResource("CircleShape2D_hk511")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hitbox" unique_id=1721930734]
-modulate = Color(1, 0.14509805, 1, 1)
-scale = Vector2(-0.11, -0.11)
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox" unique_id=997343278]
+modulate = Color(1, 0.23921569, 1, 1)
+scale = Vector2(0.045, 0.045)
 texture = ExtResource("3_k0juu")
 
 [editable path="Hitbox"]
