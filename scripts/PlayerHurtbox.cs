@@ -1,11 +1,8 @@
 using Godot;
 using System.Linq;
 
-public partial class PlayerHurtbox : Area2D
+public partial class PlayerHurtbox : Hurtbox
 {
-    [Export]
-    public HealthComponent HealthComponent { get; set; }
-
     [Export]
     public Stats Stats { get; set; }
 
@@ -14,14 +11,15 @@ public partial class PlayerHurtbox : Area2D
 
     public override void _Ready()
     {
+        base._Ready();
+
         IFrameTimer.WaitTime = Stats.GetStatValue(StatType.InvincibilityDuration);
 
         IFrameTimer.Timeout += OnIFrameTimerTimeout;
-        AreaEntered += OnAreaEntered;
         Stats.StatChanged += OnStatChanged;
     }
 
-    private void OnAreaEntered(Area2D area)
+    public override void OnAreaEntered(Area2D area)
     {
         if (!IFrameTimer.IsStopped()) return; // Player is currently invincible, ignore damage
         if (HealthComponent.IsDead) return;

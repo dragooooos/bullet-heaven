@@ -16,7 +16,7 @@ public partial class Hitbox : Area2D
 
     private void OnAreaEntered(Area2D area)
     {
-        if (area is PlayerHurtbox)
+        if (area is Hurtbox)
         {
             EmitSignalHitLanded(Damage);
         }

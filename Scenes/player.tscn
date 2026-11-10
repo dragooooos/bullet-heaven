@@ -5,20 +5,13 @@
 [ext_resource type="Script" uid="uid://dfb3qoygbuhiv" path="res://scripts/HealthComponent.cs" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://p10kigdi26yx" path="res://scripts/PlayerHurtbox.cs" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://dupyxkfu3qqo4" path="res://scripts/Stats.cs" id="4_qlg0r"]
-[ext_resource type="Script" uid="uid://cd34b4rua0oiy" path="res://scripts/resources/PlayerStats.cs" id="6_tuyoq"]
+[ext_resource type="Resource" uid="uid://dig1v1w7vxmj2" path="res://resources/player_default.tres" id="5_qlg0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hk511"]
 radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xqv3"]
 radius = 18.0
-
-[sub_resource type="Resource" id="Resource_71j4m"]
-script = ExtResource("6_tuyoq")
-MaxHealth = 3
-Speed = 400.0
-InvincibilityDuration = 1.0
-metadata/_custom_type_script = "uid://cd34b4rua0oiy"
 
 [node name="Player" type="CharacterBody2D" unique_id=1704247382 node_paths=PackedStringArray("HealthComponent", "Stats")]
 script = ExtResource("1_6t5aa")
@@ -54,4 +47,4 @@ Stats = NodePath("../Stats")
 
 [node name="Stats" type="Node" parent="." unique_id=167663937]
 script = ExtResource("4_qlg0r")
-BaseStats = SubResource("Resource_71j4m")
+BaseStats = ExtResource("5_qlg0r")

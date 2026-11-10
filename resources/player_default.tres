@@ -6,4 +6,5 @@
 script = ExtResource("1_25pdi")
 MaxHealth = 3
 Speed = 400.0
+InvincibilityDuration = 1.0
 metadata/_custom_type_script = "uid://cd34b4rua0oiy"
