@@ -1,7 +1,7 @@
 using Godot;
 
 [GlobalClass]
-public partial class PlayerStats : Resource
+public partial class BaseStats : Resource
 {
 	[Export]
 	public int MaxHealth { get; set; }

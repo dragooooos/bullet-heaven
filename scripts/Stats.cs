@@ -7,7 +7,7 @@ public partial class Stats : Node
     public delegate void StatChangedEventHandler(StatType statType, float newValue);
 
     [Export]
-    public PlayerStats BaseStats { get; set; }
+    public BaseStats BaseStats { get; set; }
 
     [Export]
     public Godot.Collections.Array<Upgrade> Upgrades { get; set; } = new Godot.Collections.Array<Upgrade>();
@@ -87,9 +87,4 @@ public partial class Stats : Node
 
         return (baseValue + flatTotal) * (1f + percentageTotal / 100f) * multiplicativeTotal;
     }
-
-    // public override void _Ready()
-    // {
-    //     GD.Print(GetStatValue(StatType.Speed));
-    // }
 }

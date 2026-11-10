@@ -1,26 +1,17 @@
 [gd_scene format=3 uid="uid://dq8dk4ep3u7v3"]
 
 [ext_resource type="PackedScene" uid="uid://dijwtr4qb0c32" path="res://scenes/player.tscn" id="1_a02cp"]
-[ext_resource type="PackedScene" uid="uid://bqu4yvuecdr8w" path="res://scenes/hitbox.tscn" id="2_4wyf3"]
-[ext_resource type="Texture2D" uid="uid://cyon4708f6ug5" path="res://assets/textures/circle.png" id="3_k0juu"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hk511"]
+[ext_resource type="Script" uid="uid://bat12v7rah3aa" path="res://scripts/EnemySpawner.cs" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://cyhp81bbc3ebc" path="res://scenes/enemy.tscn" id="4_k0juu"]
 
 [node name="World" type="Node2D" unique_id=275691042]
 
 [node name="Player" parent="." unique_id=1704247382 instance=ExtResource("1_a02cp")]
 position = Vector2(649, 365)
 
-[node name="Hitbox" parent="." unique_id=111279868 instance=ExtResource("2_4wyf3")]
-position = Vector2(226, 218)
-Damage = 1
+[node name="Enemy" parent="." unique_id=87581184 node_paths=PackedStringArray("Player") instance=ExtResource("4_k0juu")]
+position = Vector2(183, 146)
+Player = NodePath("../Player")
 
-[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=1043439207]
-shape = SubResource("CircleShape2D_hk511")
-
-[node name="Sprite2D" type="Sprite2D" parent="Hitbox" unique_id=997343278]
-modulate = Color(1, 0.23921569, 1, 1)
-scale = Vector2(0.045, 0.045)
-texture = ExtResource("3_k0juu")
-
-[editable path="Hitbox"]
+[node name="EnemySpawner" type="Node" parent="." unique_id=1895501264]
+script = ExtResource("3_4wyf3")

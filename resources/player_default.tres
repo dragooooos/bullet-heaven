@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://dig1v1w7vxmj2"]
+[gd_resource type="Resource" script_class="BaseStats" format=3 uid="uid://dig1v1w7vxmj2"]
 
-[ext_resource type="Script" uid="uid://cd34b4rua0oiy" path="res://scripts/resources/PlayerStats.cs" id="1_25pdi"]
+[ext_resource type="Script" uid="uid://dbpmji2yux8c5" path="res://scripts/resources/BaseStats.cs" id="1_25pdi"]
 
 [resource]
 script = ExtResource("1_25pdi")
 MaxHealth = 3
 Speed = 400.0
 InvincibilityDuration = 1.0
-metadata/_custom_type_script = "uid://cd34b4rua0oiy"
+metadata/_custom_type_script = "uid://dbpmji2yux8c5"

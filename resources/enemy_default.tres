@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BaseStats" format=3 uid="uid://cip7d47fosvpg"]
+
+[ext_resource type="Script" uid="uid://dbpmji2yux8c5" path="res://scripts/resources/BaseStats.cs" id="1_0p8rh"]
+
+[resource]
+script = ExtResource("1_0p8rh")
+MaxHealth = 10
+Speed = 200.0
+metadata/_custom_type_script = "uid://dbpmji2yux8c5"
